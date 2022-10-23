@@ -1,0 +1,18 @@
+name: 'Expression Service activity generation'
+description: 'Generate activities from source code'
+inputs:
+  query:
+    description: 'ETL Query'
+    required: true
+  count:
+    description: 'Number of expressions to extract'
+    required: true
+#outputs:
+#  expressions:
+#    description: 'The expressions that were found'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.query }}
+    - ${{ inputs.count }}

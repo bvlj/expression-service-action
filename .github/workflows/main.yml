@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  et_activity_generation:
+    runs-on: ubuntu-latest
+    name: E.T. activity generation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Expression Service Time
+        uses: ./docker
+        id: exps
+        with:
+          query: '(() "?" () ":" ())'
+          count: '2'
+#      - name: Some spicy expressions
+#        run: echo "${{ steps.exps.outputs.expressions }}"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: build/activities.ndjson
