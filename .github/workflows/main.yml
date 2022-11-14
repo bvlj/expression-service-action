@@ -1,5 +1,8 @@
 on: [push]
 
+permissions:
+  issues: write
+
 jobs:
   et_activity_generation:
     runs-on: ubuntu-latest
@@ -12,7 +15,9 @@ jobs:
         id: exps
         with:
           query: '(() "?" () ":" ())'
-          count: '2'
+          count: '1'
+          srcDir: 'src/main/java'
+          ghToken: ${{ secrets.GITHUB_TOKEN }}
 #      - name: Some spicy expressions
 #        run: echo "${{ steps.exps.outputs.expressions }}"
       - uses: actions/upload-artifact@v3

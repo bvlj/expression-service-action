@@ -7,6 +7,12 @@ inputs:
   count:
     description: 'Number of expressions to extract'
     required: true
+  srcDir:
+    description: 'Sources directory'
+    required: true
+  ghToken:
+    description: 'GitHub token used to create the issue (e.g. secrets.GITHUB_TOKEN)'
+    required: true
 #outputs:
 #  expressions:
 #    description: 'The expressions that were found'
@@ -16,3 +22,5 @@ runs:
   args:
     - ${{ inputs.query }}
     - ${{ inputs.count }}
+    - ${{ inputs.srcDir }}
+    - ${{ inputs.ghToken }}
